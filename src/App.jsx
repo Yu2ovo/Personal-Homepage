@@ -382,24 +382,7 @@ export default function App() {
         </div>
       </section>
 
-      <section className="container footer-cta">
-        <div>
-          <h2>持续完善项目文档</h2>
-          <p>
-            我会继续补充项目 README、架构图、核心流程图、接口说明、部署说明和复盘文档，
-            让项目从“简历描述”变成“可访问、可验证、可复盘”的作品集。
-          </p>
-        </div>
-
-        <a
-          className="btn light"
-          href={PROFILE.github}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <ExternalLink size={17} /> 查看全部项目
-        </a>
-      </section>
+      
     </main>
   )
 }
