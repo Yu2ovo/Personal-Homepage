@@ -186,7 +186,7 @@ function ProjectCard({ project }) {
           </div>
         </div>
         <div className="project-actions">
-          <a className="btn secondary" href="#" aria-label="GitHub 地址">
+          <a className="btn secondary" href={project.github} aria-label="GitHub 地址">
             <GitBranch size={16} /> GitHub
           </a>
           <a className="btn primary" href="#" aria-label="在线演示地址">
