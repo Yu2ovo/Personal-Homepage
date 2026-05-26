@@ -5,7 +5,7 @@ import {
   Database,
   ExternalLink,
   FileText,
-  Github,
+  GitBranch,
   GraduationCap,
   Mail,
   MessageSquare,
@@ -185,7 +185,7 @@ function ProjectCard({ project }) {
         </div>
         <div className="project-actions">
           <a className="btn secondary" href="#" aria-label="GitHub 地址">
-            <Github size={16} /> GitHub
+            <GitBranch size={16} /> GitHub
           </a>
           <a className="btn primary" href="#" aria-label="在线演示地址">
             <ExternalLink size={16} /> Demo
@@ -258,7 +258,7 @@ export default function App() {
             </p>
             <div className="hero-actions">
               <a className="btn primary" href={PROFILE.resumeUrl}><Download size={17} /> 下载简历</a>
-              <a className="btn secondary" href={PROFILE.github}><Github size={17} /> GitHub</a>
+              <a className="btn secondary" href={PROFILE.github}><GitBranch size={17} /> GitHub</a>
               <a className="btn secondary" href={`mailto:${PROFILE.email}`}><Mail size={17} /> 联系我</a>
             </div>
           </motion.div>
