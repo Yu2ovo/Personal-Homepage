@@ -2,7 +2,6 @@ import { useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import {
   Bot,
-  Database,
   ExternalLink,
   FileText,
   GitBranch,
@@ -35,6 +34,7 @@ const projects = [
     subtitle: 'Spring Cloud 微服务项目',
     github: 'https://github.com/Yu2ovo/java-project',
     demo: 'https://yu2ovo.github.io/cloudclass-demo/',
+    docs: 'https://github.com/Yu2ovo/java-project#readme',
     icon: Server,
     summary:
       '面向在线教育业务场景的后端微服务系统，覆盖课程管理、媒资管理、课程搜索、订单支付、选课学习、认证授权等核心模块。',
@@ -91,6 +91,7 @@ const projects = [
     subtitle: 'Spring AI / RAG / Tool Calling / MCP',
     github: 'https://github.com/Yu2ovo/AI-customer-service',
     demo: 'https://yu2ovo.github.io/AI-project-demo/',
+    docs: 'https://github.com/Yu2ovo/AI-customer-service#readme',
     icon: Bot,
     summary:
       '面向客服问答场景的 AI 应用系统，支持多轮对话、业务知识库检索、工具调用和外部 MCP 服务扩展。',
@@ -171,6 +172,7 @@ function SectionTitle({ eyebrow, title, desc }) {
 
 function ProjectCard({ project }) {
   const Icon = project.icon
+
   return (
     <motion.article
       className="project-card"
@@ -181,19 +183,51 @@ function ProjectCard({ project }) {
     >
       <div className="project-head">
         <div className="project-title-wrap">
-          <div className="project-icon"><Icon size={26} /></div>
+          <div className="project-icon">
+            <Icon size={26} />
+          </div>
           <div>
             <h3>{project.name}</h3>
             <p>{project.subtitle}</p>
           </div>
         </div>
+
         <div className="project-actions">
-          <a className="btn secondary" href={project.github} aria-label="GitHub 地址">
-            <GitBranch size={16} /> GitHub
-          </a>
-          <a className="btn primary" href={project.demo} aria-label="在线演示地址">
-            <ExternalLink size={16} /> Demo
-          </a>
+          {project.github && (
+            <a
+              className="btn secondary"
+              href={project.github}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`${project.name} GitHub 地址`}
+            >
+              <GitBranch size={16} /> GitHub
+            </a>
+          )}
+
+          {project.demo && (
+            <a
+              className="btn primary"
+              href={project.demo}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`${project.name} 在线演示地址`}
+            >
+              <ExternalLink size={16} /> Demo
+            </a>
+          )}
+
+          {project.docs && (
+            <a
+              className="btn secondary"
+              href={project.docs}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`${project.name} 项目文档地址`}
+            >
+              <FileText size={16} /> 项目文档
+            </a>
+          )}
         </div>
       </div>
 
@@ -210,7 +244,9 @@ function ProjectCard({ project }) {
           const ItemIcon = item.icon
           return (
             <div key={item.title} className="highlight-card">
-              <div className="highlight-title"><ItemIcon size={17} /> {item.title}</div>
+              <div className="highlight-title">
+                <ItemIcon size={17} /> {item.title}
+              </div>
               <p>{item.text}</p>
             </div>
           )
@@ -218,7 +254,9 @@ function ProjectCard({ project }) {
       </div>
 
       <div className="star-box">
-        <div className="star-title"><CheckCircle2 size={20} /> STAR 项目亮点</div>
+        <div className="star-title">
+          <CheckCircle2 size={20} /> STAR 项目亮点
+        </div>
         <div className="star-list">
           {project.star.map((item, index) => (
             <div className="star-item" key={item}>
@@ -238,6 +276,7 @@ export default function App() {
   const filteredProjects = useMemo(() => {
     const q = keyword.trim().toLowerCase()
     if (!q) return projects
+
     return projects.filter((project) => {
       const text = [project.name, project.subtitle, project.summary, ...project.stack]
         .join(' ')
@@ -255,15 +294,34 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="pill"><GraduationCap size={16} /> {PROFILE.school}</div>
+            <div className="pill">
+              <GraduationCap size={16} /> {PROFILE.school}
+            </div>
+
             <h1>{PROFILE.name}的项目展示站</h1>
+
             <p className="hero-desc">
-              聚焦 Java 后端、微服务架构与 AI 应用开发。这里展示我的核心项目：云学堂在线教育平台与 AI 智能客服，突出业务流程、技术选型、工程优化和可复盘的项目亮点。
+              聚焦 Java 后端、微服务架构与 AI 应用开发。这里展示我的核心项目：云学堂在线教育平台与
+              AI 智能客服，突出业务流程、技术选型、工程优化和可复盘的项目亮点。
             </p>
+
             <div className="hero-actions">
-              <a className="btn primary" href={PROFILE.resumeUrl}><Download size={17} /> 下载简历</a>
-              <a className="btn secondary" href={PROFILE.github}><GitBranch size={17} /> GitHub</a>
-              <a className="btn secondary" href={`mailto:${PROFILE.email}`}><Mail size={17} /> 联系我</a>
+              <a className="btn primary" href={PROFILE.resumeUrl} download>
+                <Download size={17} /> 下载简历
+              </a>
+
+              <a
+                className="btn secondary"
+                href={PROFILE.github}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <GitBranch size={17} /> GitHub
+              </a>
+
+              <a className="btn secondary" href={`mailto:${PROFILE.email}`}>
+                <Mail size={17} /> 联系我
+              </a>
             </div>
           </motion.div>
 
@@ -275,12 +333,22 @@ export default function App() {
           >
             <p className="eyebrow left">Core Skills</p>
             <h2>技术栈概览</h2>
+
             <div className="badge-list skill-badges">
-              {skills.map((skill) => <Badge key={skill}>{skill}</Badge>)}
+              {skills.map((skill) => (
+                <Badge key={skill}>{skill}</Badge>
+              ))}
             </div>
-            <div className="skill-note"><b>后端方向：</b>Spring Boot、MyBatis、MySQL、Redis、RabbitMQ、Elasticsearch</div>
-            <div className="skill-note"><b>微服务方向：</b>Nacos、Gateway、OpenFeign、OAuth2、JWT、XXL-JOB</div>
-            <div className="skill-note"><b>AI 应用方向：</b>Spring AI、RAG、Prompt、Tool Calling、MCP</div>
+
+            <div className="skill-note">
+              <b>后端方向：</b>Spring Boot、MyBatis、MySQL、Redis、RabbitMQ、Elasticsearch
+            </div>
+            <div className="skill-note">
+              <b>微服务方向：</b>Nacos、Gateway、OpenFeign、OAuth2、JWT、XXL-JOB
+            </div>
+            <div className="skill-note">
+              <b>AI 应用方向：</b>Spring AI、RAG、Prompt、Tool Calling、MCP
+            </div>
           </motion.div>
         </div>
       </section>
@@ -291,6 +359,7 @@ export default function App() {
             <p className="search-label">项目检索</p>
             <p>输入技术关键词，例如 Redis、RabbitMQ、RAG、Elasticsearch。</p>
           </div>
+
           <input
             value={keyword}
             onChange={(e) => setKeyword(e.target.value)}
@@ -305,10 +374,32 @@ export default function App() {
           title="核心项目"
           desc="每个项目按照“业务场景、技术方案、解决问题、工程效果”的思路展示，方便面试官快速理解项目价值。"
         />
+
         <div className="project-list">
-          {filteredProjects.map((project) => <ProjectCard key={project.id} project={project} />)}
+          {filteredProjects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
         </div>
-    
+      </section>
+
+      <section className="container footer-cta">
+        <div>
+          <h2>持续完善项目文档</h2>
+          <p>
+            我会继续补充项目 README、架构图、核心流程图、接口说明、部署说明和复盘文档，
+            让项目从“简历描述”变成“可访问、可验证、可复盘”的作品集。
+          </p>
+        </div>
+
+        <a
+          className="btn light"
+          href={PROFILE.github}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <ExternalLink size={17} /> 查看全部项目
+        </a>
+      </section>
     </main>
   )
 }
