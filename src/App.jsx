@@ -34,6 +34,7 @@ const projects = [
     name: '云学堂在线教育平台',
     subtitle: 'Spring Cloud 微服务项目',
     github: 'https://github.com/Yu2ovo/java-project',
+    demo: 'https://yu2ovo.github.io/cloudclass-demo/'
     icon: Server,
     summary:
       '面向在线教育业务场景的后端微服务系统，覆盖课程管理、媒资管理、课程搜索、订单支付、选课学习、认证授权等核心模块。',
