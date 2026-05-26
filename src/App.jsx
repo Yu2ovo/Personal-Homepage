@@ -25,7 +25,7 @@ const PROFILE = {
   school: '南京理工大学 · 计算机技术 · 2027 届',
   email: '2592875730@qq.com',
   github: 'https://github.com/Yu2ovo',
-  resumeUrl: '#',
+  resumeUrl: '/陆鹏宇-南京理工大学--2027届 .pdf',
 }
 
 const projects = [
