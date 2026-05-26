@@ -33,6 +33,7 @@ const projects = [
     id: 'cloud-course',
     name: '云学堂在线教育平台',
     subtitle: 'Spring Cloud 微服务项目',
+    github:https://github.com/Yu2ovo/java-project,
     icon: Server,
     summary:
       '面向在线教育业务场景的后端微服务系统，覆盖课程管理、媒资管理、课程搜索、订单支付、选课学习、认证授权等核心模块。',
@@ -87,6 +88,7 @@ const projects = [
     id: 'ai-customer-service',
     name: 'AI 智能客服',
     subtitle: 'Spring AI / RAG / Tool Calling / MCP',
+    github:https://github.com/Yu2ovo/AI-customer-service,
     icon: Bot,
     summary:
       '面向客服问答场景的 AI 应用系统，支持多轮对话、业务知识库检索、工具调用和外部 MCP 服务扩展。',
