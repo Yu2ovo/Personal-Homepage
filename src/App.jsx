@@ -90,6 +90,7 @@ const projects = [
     name: 'AI 智能客服',
     subtitle: 'Spring AI / RAG / Tool Calling / MCP',
     github: 'https://github.com/Yu2ovo/AI-customer-service',
+    demo: 'https://yu2ovo.github.io/AI-project-demo/',
     icon: Bot,
     summary:
       '面向客服问答场景的 AI 应用系统，支持多轮对话、业务知识库检索、工具调用和外部 MCP 服务扩展。',
