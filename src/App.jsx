@@ -308,15 +308,7 @@ export default function App() {
         <div className="project-list">
           {filteredProjects.map((project) => <ProjectCard key={project.id} project={project} />)}
         </div>
-      </section>
-
-       <section className="container footer-cta">
-        <div>
-          <h2>后续可以继续扩展</h2>
-          <p>可以继续补充在线 Demo、接口文档、架构图、核心流程图、压测报告和部署说明，让项目从“简历描述”变成“可访问、可验证、可复盘”的作品集。</p>
-        </div>
-        <a className="btn light" href="#"><ExternalLink size={17} /> 查看项目文档</a>
-      </section> 
+    
     </main>
   )
 }
